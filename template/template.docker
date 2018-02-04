@@ -1,0 +1,16 @@
+FROM monroe/base
+
+MAINTAINER y.lampiga@gmail.com
+
+COPY files/* /opt/monroe/
+RUN apt-get update && apt-get install -y apt-transport-https && apt-get clean
+RUN apt-get update && apt-get install -y aptitude && apt-get clean
+RUN apt-get update && apt-get install -y v4l2loopback-dkms && apt-get clean
+
+RUN echo 'deb http://ppa.launchpad.net/mc3man/trusty-media/ubuntu trusty main' >> /etc/apt/sources.list
+RUN echo 'deb-src http://ppa.launchpad.net/mc3man/trusty-media/ubuntu trusty main ' >> /etc/apt/sources.list
+RUN apt-get download ffmpeg
+RUN dpkg -i --force-depends ff*.deb
+RUN apt-get -f install
+
+ENTRYPOINT ["dumb-init", "--", "/usr/bin/bash", "/opt/monroe/preparation.sh"]

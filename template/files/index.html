@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+    <script>
+var win = nw.Window.get();
+
+win.on('minimize', function() {
+  console.log('Window is minimized');
+});
+win.minimize();
+win.removeAllListeners('minimize');
+nw.Window.open(https://localhost:8443/#, {}, function(new_win) {
+  new_win.on('focus', function() {
+    console.log('New window is focused');
+  });
+
+});
+</script>
+</html>

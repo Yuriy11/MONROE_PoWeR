@@ -1,0 +1,15 @@
+{
+  "name": "helloworld",
+  "main": "index.html",
+    "window": {
+    "toolbar": false,
+    "position": "center",
+    "min_width": 800,
+    "min_height": 500,
+    "as_desktop": true,
+    "resizable": true,
+    "frame": true,
+    "chromium-args": "--allow-running-insecure-content --ignore-certificate-errors"
+  },
+  "chromium-args": "--allow-running-insecure-content --ignore-certificate-errors"
+}
